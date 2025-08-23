@@ -4,7 +4,9 @@ public class Sorting{
     public static void printArray(int arr[]){
         for(int i =0; i< arr.length; i++){
             System.out.print(arr[i] + " ");
+            
         }
+        System.out.println();
     }
     public static void main(String args[]){
         int[] array = {8,7,1,2,3};
@@ -20,7 +22,21 @@ public class Sorting{
                 }
             }
         }
-
         printArray(array);
+
+        int[] selectionArray = {9,7,1,2,3};
+        // selection  and time complexity of O(n^2)
+        for(int i =0; i<selectionArray.length-1; i++){ // loops
+            int smallest = i; // assumes first number at index[0] has the smallest element 
+            for(int j = i+1; j<selectionArray.length; j++){  // loops from second number to end of array 
+                if(selectionArray[smallest] > selectionArray[j]){ // compare the first element with entire array 
+                    smallest = j; // selects the absolute smallest number in arr keep doing this for entire loop
+                }
+            }
+            int temp = selectionArray[smallest];  // save the smallest element which is now [3]1 to temp
+            selectionArray[smallest] = selectionArray[i]; // updated the [3]1 to now be [0]8 aka index 3 now becomes 8
+            selectionArray[i] = temp; // lastly index 0 becomes smallest value in temp which is 1
+        }
+        printArray(selectionArray);
     }
 }
