@@ -38,5 +38,19 @@ public class Sorting{
             selectionArray[i] = temp; // lastly index 0 becomes smallest value in temp which is 1
         }
         printArray(selectionArray);
+
+        int[] insertionArray = {7,8,3,1,2};
+
+        // insertion sort
+        for(int i =1; i< insertionArray.length; i++){
+            int current = insertionArray[i];
+            int j = i-1;
+            while(j>= 0 && current < insertionArray[j]){
+                insertionArray[j+1] = insertionArray[j];
+                j--; 
+            }
+            insertionArray[j+1] = current;
+        }
+        printArray(insertionArray);
     }
 }
