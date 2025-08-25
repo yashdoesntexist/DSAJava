@@ -39,6 +39,17 @@ public class moreRecursionClass {
 
         findOccurance(str, idx+1, element);
     }
+    public static boolean isSorted(int[] arr, int idx ){
+        if(idx == arr.length-1){
+            return true;
+        }
+        if(arr[idx] < arr[idx+1]){
+            return isSorted(arr, idx+1);
+        }else{
+            return false;
+        }
+
+    }
     public static void main(String args[]){
         // Tower of Hanoi
         int n = 2;
@@ -49,6 +60,9 @@ public class moreRecursionClass {
         reversePrint(str, str.length()-1);
 
         findOccurance(str, 0, 'a');
+
+        int arr[] = {1,3,5};
+        System.out.println(isSorted(arr, 0));
 
     }
 }
