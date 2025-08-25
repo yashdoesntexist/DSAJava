@@ -1,7 +1,54 @@
 package DSAJava;
 
 public class moreRecursionClass {
+    public static void towerOfHanoi(int n, String src, String helper, String dest){
+        if(n==1){
+            System.out.println("transfer disk " + n + " from " + src + " to "+ dest);
+            return;
+        }
+        towerOfHanoi(n-1, src, dest, helper);
+        System.out.println("transfer disk " + n + " from " + src + " to "+ dest);
+        towerOfHanoi(n-1, helper, src, dest);
+
+    }
+    public static void reversePrint(String str, int idx){
+        if(idx == 0){
+            System.out.println(str.charAt(idx));
+            return;
+        }
+        System.out.println(str.charAt(idx));
+        reversePrint(str, idx-1);
+    }
+    public static int first = -1;
+    public static int last = -1;
+
+    public static void findOccurance(String str, int idx, char element){
+        if(idx == str.length()){
+            System.out.println(first);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        if(currChar == element){
+            if(first == -1){
+                first = idx;
+            
+            }else{
+                last = idx;
+            }
+        }
+
+        findOccurance(str, idx+1, element);
+    }
     public static void main(String args[]){
-        
+        // Tower of Hanoi
+        int n = 2;
+        towerOfHanoi(n, "S tower", "h tower", "D tower");
+        // O(2^n)
+
+        String str = "abcasdaacdd";
+        reversePrint(str, str.length()-1);
+
+        findOccurance(str, 0, 'a');
+
     }
 }
