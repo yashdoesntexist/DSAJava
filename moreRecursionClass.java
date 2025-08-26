@@ -1,5 +1,7 @@
 package DSAJava;
 
+import java.util.HashSet;
+
 public class moreRecursionClass {
     public static void towerOfHanoi(int n, String src, String helper, String dest){
         if(n==1){
@@ -83,7 +85,38 @@ public class moreRecursionClass {
             removeDups(str, idx+1, newString);
         }
     }
+    public static void printSub(String str, int idx, String newString){
+        if(idx == str.length()){
+            System.out.println(newString);
+            return;
+        }
+        char currChar = str.charAt(idx);
+
+        printSub(str, idx+1, newString+currChar);
+
+        printSub(str, idx+1, newString);
+    }
+
+        public static void subSeq(String str, int idx, String newString, HashSet<String> set){
+        if(idx == str.length()){
+            if(set.contains(newString)){
+                return;
+            }else{
+                System.out.println(newString);
+                set.add(newString);
+                return;
+            }
+        }
+        char currChar = str.charAt(idx);
+
+        subSeq(str, idx+1, newString+currChar, set);
+
+        subSeq(str, idx+1, newString, set);
+    }
+
     public static void main(String args[]){
+        HashSet<String> set = new HashSet<>();
+
         // // Tower of Hanoi
         // int n = 2;
         // towerOfHanoi(n, "S tower", "h tower", "D tower");
@@ -96,9 +129,10 @@ public class moreRecursionClass {
 
         // int arr[] = {1,3,5};
         // System.out.println(isSorted(arr, 0));
-        String str = "abbccda";
+        String str = "aaa";
         // moveAllX(str, 0, 0, "");
-        removeDups(str, 0, "");
+        // removeDups(str, 0, "");
+        subSeq(str, 0, "", set);
 
     }
 }
