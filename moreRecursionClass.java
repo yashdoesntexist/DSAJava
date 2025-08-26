@@ -50,19 +50,55 @@ public class moreRecursionClass {
         }
 
     }
+    public static void moveAllX(String str, int idx, int count, String newString){
+        if(idx == str.length()){
+            for(int i =0; i<count; i++){
+                newString += 'x';
+            }
+            System.out.println(newString);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        if(currChar == 'x'){
+            count ++;
+            moveAllX(str, idx+1, count, newString);
+        } else{
+            newString += currChar;
+            moveAllX(str, idx+1, count, newString);
+        }
+    }
+    public static boolean[] map = new boolean[26];
+
+    public static void removeDups(String str, int idx, String newString){
+        if(idx == str.length()){
+            System.out.println(newString);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        if(map[currChar-'a']){
+            removeDups(str, idx+1, newString);
+        }else{
+            newString += currChar;
+            map[currChar-'a'] = true;
+            removeDups(str, idx+1, newString);
+        }
+    }
     public static void main(String args[]){
-        // Tower of Hanoi
-        int n = 2;
-        towerOfHanoi(n, "S tower", "h tower", "D tower");
-        // O(2^n)
+        // // Tower of Hanoi
+        // int n = 2;
+        // towerOfHanoi(n, "S tower", "h tower", "D tower");
+        // // O(2^n)
 
-        String str = "abcasdaacdd";
-        reversePrint(str, str.length()-1);
+        // String str = "abcasdaacdd";
+        // reversePrint(str, str.length()-1);
 
-        findOccurance(str, 0, 'a');
+        // findOccurance(str, 0, 'a');
 
-        int arr[] = {1,3,5};
-        System.out.println(isSorted(arr, 0));
+        // int arr[] = {1,3,5};
+        // System.out.println(isSorted(arr, 0));
+        String str = "abbccda";
+        // moveAllX(str, 0, 0, "");
+        removeDups(str, 0, "");
 
     }
 }
