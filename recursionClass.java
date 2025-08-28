@@ -46,12 +46,40 @@ public class recursionClass {
         System.out.println(c);
         fibonacci(b, c, n-1);
     }
+    public static int powerFunction(int x, int n){
+        if(n == 0){//base case 1
+            return 1;
+        }
+        if (x==0) { // base case 2
+            return 0;
+        }
+        int prevPow = powerFunction(x, n-1);
+        int currPow = x * prevPow;
+        return currPow;
+    }
+    // does the same thing as powfunction but power function takes n stack in memory while this takes logn stack height 
+    public static int calcPower(int x, int n){ 
+        if(n == 0){//base case 1
+            return 1;
+        }
+        if (x==0) { // base case 2
+            return 0;
+        }
+        if(n%2==0){
+            return calcPower(x, n/2) * calcPower(x, n/2);
+        }else{
+            return calcPower(x, n/2) * calcPower(x, n/2) * x;
+        }
+    }
+
     public static void main(String args[]){
-        // printNum(5);
-        // printNumAsc(1);   
-        // printNatural(1, 5, 0);       
-        // System.out.println(printFac(5));
+        printNum(5);
+        printNumAsc(1);   
+        printNatural(1, 5, 0);       
+        System.out.println(printFac(5));
         int n = 7;
-        fibonacci(0, 1, n-2);                       
+        fibonacci(0, 1, n-2); 
+        System.out.println(powerFunction(2, 5));
+        System.out.println(calcPower(2, 5));
     }
 }
