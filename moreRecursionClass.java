@@ -41,11 +41,23 @@ public class moreRecursionClass {
 
         charCounter(str, element, idx+1);
     }
+    public static boolean sortedArr(int arr[], int idx){
+        if(idx == arr.length-1){
+            return true;
+        }
+        if(arr[idx] < arr[idx+1]){
+            return sortedArr(arr, idx+1);
+        }else{
+            return false;
+        }
+    }
 
 
     public static void main(String args[]){
         // towerOfHanoi(3, "Source", "helper", "destination");
         // printStringReverse("abcd", 3);
-        charCounter("abaacdaefaah", 'a', 0);
+        // charCounter("abaacdaefaah", 'a', 0);
+        int arr[] = {6,1,2,3,4,5};
+        System.out.println(sortedArr(arr, 0));
     }
 }
