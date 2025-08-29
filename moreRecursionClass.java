@@ -120,7 +120,7 @@ public class moreRecursionClass {
 
         subSeqUnique(str, idx+1, newStr, set);
     }
-
+// O(4^n)
     public static String[] keypad = {".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
     public static void keypadCombo(String str, int idx, String comb){
         if(idx == str.length()){
