@@ -1,21 +1,21 @@
 package DSAJava;
 
 public class backtrackingClass {
-    public static void permutationString(int idx, String str, String perm){
+    public static void printPermutation(String str, String perm, int idx){
         if(str.length()==0){
+            System.out.println(perm);
             return;
         }
-        for(int i=0;i<str.length(); i++){
+        for(int i=0; i<str.length();i++){
             char currChar = str.charAt(i);
             String newStr = str.substring(0, i) + str.substring(i+1);
-            permutationString(idx+1, str,  perm + currChar);
+            printPermutation(newStr, perm+ currChar, idx+1);
         }
-        
-
-// gotta come back to backtracking I am  lost 
     }
+    
 
     public static void main(String[] args) {
+        printPermutation("ABC", "", 0);
         
     }
 }
