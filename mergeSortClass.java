@@ -3,6 +3,7 @@ package DSAJava;
 import java.util.Arrays;
 
 public class mergeSortClass {
+    // make it recursive now
     public static void main(String[] args) {
         int[] arr = {6, 3, 9, 5, 2, 8};
         System.out.println("Original Array: " + Arrays.toString(arr));
