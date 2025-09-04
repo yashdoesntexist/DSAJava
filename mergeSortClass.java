@@ -1,68 +1,53 @@
 package DSAJava;
 
-import java.util.Arrays;
-
 public class mergeSortClass {
-    // make it recursive now
-    public static void main(String[] args) {
-        int[] arr = {6, 3, 9, 5, 2, 8};
-        System.out.println("Original Array: " + Arrays.toString(arr));
+    public static void conquer(int arr[], int si,int mid, int ei){
+        int merger[] = new int[ei-si+1];
+        int idx1 = si;
+        int idx2 = mid+1;
+        int x=0;
 
-        mergeSort(arr, 0, arr.length - 1);
+        while(idx1 <= mid && idx2 <= ei){
+            if(arr[idx1]<= arr[idx2]){
+                merger[x++] = arr[idx1++];
 
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-    }
-
-    // Merge Sort function
-    public static void mergeSort(int[] arr, int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-
-            // Sort left half
-            mergeSort(arr, left, mid);
-
-            // Sort right half
-            mergeSort(arr, mid + 1, right);
-
-            // Merge the two halves
-            merge(arr, left, mid, right);
-        }
-    }
-
-    // Merge function
-    public static void merge(int[] arr, int left, int mid, int right) {
-        // Sizes of two subarrays
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
-
-        // Temp arrays
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-
-        // Copy data
-        for (int i = 0; i < n1; i++) {
-            L[i] = arr[left + i];
-        }
-        for (int j = 0; j < n2; j++) {
-            R[j] = arr[mid + 1 + j];
-        }
-
-        // Merge them back
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                arr[k++] = L[i++];
-            } else {
-                arr[k++] = R[j++];
+            }else{
+                merger[x++] = arr[idx2++];
             }
         }
 
-        // Copy remaining elements (if any)
-        while (i < n1) {
-            arr[k++] = L[i++];
+        while(idx1 <=mid){
+            merger[x++] = arr[idx1++];
         }
-        while (j < n2) {
-            arr[k++] = R[j++];
+
+        while (idx2<= ei) {
+            merger[x++] = arr[idx2++];
+            
+        }
+
+        for(int i=0, j=si; i<merger.length; i++, j++){
+            arr[j] = merger[i];
         }
     }
+    public static void divide(int arr[], int si, int ei){
+        if(si >= ei){
+            return;
+        }
+        int mid = si + (ei-si)/2;
+        divide(arr, si, mid);
+        divide(arr, mid+1, ei);
+        conquer(arr, si,mid, ei);
+
+    }
+    public static void main(String[] args) {
+        int arr[] = {6, 3, 9, 5, 2, 8};
+        int n = arr.length;
+
+        divide(arr, 0, n-1);
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i] + " | ");
+        }
+        System.out.println();
+    }
+
 }
