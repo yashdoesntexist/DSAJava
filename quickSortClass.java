@@ -44,8 +44,7 @@ class GfG {
             // pi is the partition return index of pivot
             int pi = partition(arr, low, high);
 
-            // recursion calls for smaller elements
-            // and greater or equals elements
+
             quickSort(arr, low, pi - 1);
             quickSort(arr, pi + 1, high);
         }
