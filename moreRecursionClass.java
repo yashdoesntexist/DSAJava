@@ -79,7 +79,7 @@ public class moreRecursionClass {
             return;
         }
         char currChar = str.charAt(idx);
-        if(map[currChar -'a'] == true){
+        if(map[currChar - 'a']){
             removeDuplicate(str, idx+1, newStr);
         }else{
             newStr += currChar;
