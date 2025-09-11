@@ -1,6 +1,7 @@
 package DSAJava;
 
 public class quickSortClass {
+//    O(n^2)
     public static int partition(int[] arr, int low, int high ){
         int pivot = arr[high];
         int i = low-1;
